@@ -29,7 +29,15 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    public void atualizar(DadosAtualizarMedico dados){
+    public void atualizar(@RequestBody DadosAtualizarMedico dados){
         Medico medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        Medico medico = repository.getReferenceById(id);
+        medico.excluir();
     }
 }
