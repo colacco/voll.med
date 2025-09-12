@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.medico.DadosAtualizarMedico;
+import med.voll.api.paciente.DataPutPaciente;
 
 @Embeddable
 @Getter
@@ -28,6 +29,30 @@ public class Endereco {
         this.complemento = dados.complemento();
         this.cidade = dados.cidade();
         this.uf = dados.uf();
+    }
+
+    public Endereco(DataPutPaciente dataPutPaciente) {
+        if (dataPutPaciente.endereco().logradouro != null){
+            this.logradouro = dataPutPaciente.endereco().logradouro;
+        }
+        if (dataPutPaciente.endereco().bairro != null){
+            this.bairro = dataPutPaciente.endereco().bairro;
+        }
+        if (dataPutPaciente.endereco().cep != null){
+            this.cep = dataPutPaciente.endereco().cep;
+        }
+        if (dataPutPaciente.endereco().numero != null){
+            this.numero = dataPutPaciente.endereco().numero;
+        }
+        if (dataPutPaciente.endereco().complemento != null){
+            this.complemento = dataPutPaciente.endereco().complemento;
+        }
+        if (dataPutPaciente.endereco().cidade != null){
+            this.cidade = dataPutPaciente.endereco().cidade;
+        }
+        if (dataPutPaciente.endereco().uf != null){
+            this.uf = dataPutPaciente.endereco().uf;
+        }
     }
 
     public void atualizarInformacoes(DadosAtualizarMedico dados) {
